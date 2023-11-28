@@ -1,16 +1,16 @@
-import React from 'react';
-import Yorum from './Yorum';
-import './Yorumlar.css';
+import React from "react";
+import Yorum from "./Yorum";
+import "./Yorumlar.css";
 
-const Yorumlar = props => {
+const Yorumlar = (props) => {
   // 🔥 Bu bileşenin parentının aşağıdaki propları düzgün gönderdiğinden emin olun.
   const { yorumlar } = props;
 
-  return (
+  return yorumlar.map((yorum) => (
     <div>
-      {/* her gönderi yorumları için map'le işleyerek bir Yorum bileşeni döndürün (proplarına dikkat ederek)*/}
+      <Yorum yorum={yorum} />
     </div>
-  );
+  ));
 };
 
 export default Yorumlar;

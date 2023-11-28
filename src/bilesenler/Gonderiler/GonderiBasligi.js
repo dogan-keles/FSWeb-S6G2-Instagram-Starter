@@ -1,18 +1,26 @@
-// Bu dosyada bir değişiklik yapmanıza gerek yok
 import React from "react";
+import Gonderi from "./Gonderi";
+import "./Gonderiler.css";
 
-const GonderiBasligi = (props) => {
-  // 🔥 Bu bileşenin parentının aşağıdaki propları düzgün gönderdiğinden emin olun.
-  const { thumbnailUrl, username } = props;
+const Gonderiler = (props) => {
+  const { gonderiyiBegen, gonderiler } = props;
+
+  // Check if gonderiler is undefined or null before mapping
+  if (!gonderiler) {
+    return null; // or display a loading state or message
+  }
 
   return (
-    <div className="post-header">
-      <div className="post-thumb-wrapper">
-        <img alt="post header" className="post-thumb" src={thumbnailUrl} />
-      </div>
-      <h2>{username}</h2>
+    <div className="posts-container-wrapper">
+      {gonderiler.map((gonderi) => (
+        <Gonderi
+          key={gonderi.id}
+          gonderi={gonderi}
+          gonderiyiBegen={gonderiyiBegen}
+        />
+      ))}
     </div>
   );
 };
 
-export default GonderiBasligi;
+export default Gonderiler;
